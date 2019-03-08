@@ -1,6 +1,6 @@
 ## [`master`](https://github.com/elastic/eui/tree/master)
 
-No public interface changes since `9.1.0`.
+- Added `footerLink` and `showToolTips` to `EuiNavDrawer` ([#1701](https://github.com/elastic/eui/pull/1701))
 
 ## [`9.1.0`](https://github.com/elastic/eui/tree/v9.1.0)
 

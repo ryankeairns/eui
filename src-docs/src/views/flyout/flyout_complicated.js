@@ -20,6 +20,8 @@ import {
   EuiTitle,
 } from '../../../../src/components';
 
+import { AnimatePresence } from 'framer-motion';
+
 import SuperSelectComplexExample from '../super_select/super_select_complex';
 
 export class FlyoutComplicated extends Component {
@@ -224,7 +226,7 @@ export class FlyoutComplicated extends Component {
       <div>
         <EuiButton onClick={this.showFlyout}>Show flyout</EuiButton>
 
-        {flyout}
+        <AnimatePresence>{flyout}</AnimatePresence>
       </div>
     );
   }

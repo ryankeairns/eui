@@ -8,6 +8,8 @@ import { EuiFocusTrap } from '../focus_trap';
 import { EuiOverlayMask } from '../overlay_mask';
 import { EuiButtonIcon } from '../button';
 
+import { motion } from 'framer-motion';
+
 export type EuiFlyoutSize = 's' | 'm' | 'l';
 
 const sizeToClassNameMap: { [size in EuiFlyoutSize]: string } = {
@@ -103,16 +105,27 @@ export class EuiFlyout extends Component<EuiFlyoutProps> {
       );
     }
 
+    const motionFlyout = {
+      hidden: { opacity: 0, x: '100%' },
+      visible: { opacity: 1, x: '0%' },
+    }
+
     const flyoutContent = (
-      <div
+      <motion.div
         role="dialog"
         className={classes}
         tabIndex={0}
         style={newStyle || style}
+        variants={motionFlyout}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+        // transition={{ type: "spring", stiffness: 280, damping: 20 }}
+        transition={{ easeOut: [0.7, 0.05, 0.35, 1], duration: 0.25 }}
         {...rest}>
         {closeButton}
         {children}
-      </div>
+      </motion.div>
     );
 
     // If ownFocus is set, show an overlay behind the flyout and allow the user

@@ -10,6 +10,8 @@ import {
   EuiCodeBlock,
 } from '../../../../src/components';
 
+import { AnimatePresence } from 'framer-motion';
+
 export class Flyout extends Component {
   constructor(props) {
     super(props);
@@ -77,7 +79,7 @@ export class Flyout extends Component {
       <div>
         <EuiButton onClick={this.showFlyout}>Show flyout</EuiButton>
 
-        {flyout}
+        <AnimatePresence>{flyout}</AnimatePresence>
       </div>
     );
   }

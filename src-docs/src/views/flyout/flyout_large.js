@@ -9,6 +9,8 @@ import {
   EuiTitle,
 } from '../../../../src/components';
 
+import { AnimatePresence } from 'framer-motion';
+
 export class FlyoutLarge extends Component {
   constructor(props) {
     super(props);
@@ -61,7 +63,7 @@ export class FlyoutLarge extends Component {
       <div>
         <EuiButton onClick={this.showFlyout}>Show large flyout</EuiButton>
 
-        {flyout}
+        <AnimatePresence>{flyout}</AnimatePresence>
       </div>
     );
   }

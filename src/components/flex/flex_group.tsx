@@ -1,6 +1,7 @@
 import React, { HTMLAttributes, Ref } from 'react';
 import classNames from 'classnames';
 import { CommonProps, keysOf } from '../common';
+import { motion } from 'framer-motion';
 
 export type FlexGroupAlignItems = keyof typeof alignItemsToClassNameMap;
 export type FlexGroupComponentType = 'div' | 'span';
@@ -65,6 +66,18 @@ const isValidElement = (
   return ['div', 'span'].includes(component);
 };
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.2,
+      staggerChildren: 0.1
+    },
+    delay: 4
+  },
+}
+
 const EuiFlexGroup = React.forwardRef<
   HTMLDivElement | HTMLSpanElement,
   CommonProps &
@@ -113,12 +126,16 @@ const EuiFlexGroup = React.forwardRef<
         {children}
       </span>
     ) : (
-      <div
+      <motion.div
         className={classes}
         ref={ref as Ref<HTMLDivElement>}
-        {...rest as HTMLAttributes<HTMLDivElement>}>
+        {...rest as HTMLAttributes<HTMLDivElement>}
+        variants={container}
+        initial="hidden"
+        animate="show"
+      >
         {children}
-      </div>
+      </motion.div>
     );
   }
 );

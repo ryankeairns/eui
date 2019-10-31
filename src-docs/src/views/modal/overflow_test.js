@@ -12,6 +12,8 @@ import {
   EuiText,
 } from '../../../../src/components';
 
+import { AnimatePresence } from 'framer-motion';
+
 export class OverflowTest extends Component {
   constructor(props) {
     super(props);
@@ -102,7 +104,7 @@ export class OverflowTest extends Component {
       <div>
         <EuiButton onClick={this.showModal}>Show Modal</EuiButton>
 
-        {modal}
+        <AnimatePresence>{modal}</AnimatePresence>
       </div>
     );
   }

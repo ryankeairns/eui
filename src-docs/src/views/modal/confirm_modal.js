@@ -6,6 +6,8 @@ import {
   EuiOverlayMask,
 } from '../../../../src/components';
 
+import { AnimatePresence } from 'framer-motion';
+
 export class ConfirmModal extends Component {
   state = {
     isModalVisible: false,
@@ -105,9 +107,9 @@ export class ConfirmModal extends Component {
         <EuiButton onClick={this.showEmptyModal}>
           Show title-only ConfirmModal
         </EuiButton>
-        {modal}
-        {destroyModal}
-        {emptyModal}
+        <AnimatePresence>{modal}</AnimatePresence>
+        <AnimatePresence>{destroyModal}</AnimatePresence>
+        <AnimatePresence>{emptyModal}</AnimatePresence>
       </div>
     );
   }

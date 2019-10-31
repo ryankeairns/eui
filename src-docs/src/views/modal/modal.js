@@ -18,6 +18,8 @@ import {
   EuiSpacer,
 } from '../../../../src/components';
 
+import { AnimatePresence } from 'framer-motion';
+
 import SuperSelectComplexExample from '../super_select/super_select_complex';
 
 import makeId from '../../../../src/components/form/form_row/make_id';
@@ -109,7 +111,7 @@ export class Modal extends Component {
       <div>
         <EuiButton onClick={this.showModal}>Show Modal</EuiButton>
 
-        {modal}
+        <AnimatePresence>{modal}</AnimatePresence>
       </div>
     );
   }

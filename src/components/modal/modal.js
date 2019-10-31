@@ -10,6 +10,8 @@ import { EuiFocusTrap } from '../focus_trap';
 
 import { EuiI18n } from '../i18n';
 
+import { motion } from 'framer-motion';
+
 export class EuiModal extends Component {
   onKeyDown = event => {
     if (event.keyCode === keyCodes.ESCAPE) {
@@ -41,13 +43,18 @@ export class EuiModal extends Component {
 
     const classes = classnames('euiModal', widthClassName, className);
 
+    const motionModal = {
+      hidden: { opacity: 0, y: 32, transition: { duration: .1 } },
+      visible: { opacity: 1, y: 0, transition: { duration: .25 } },
+    }
+
     return (
       <EuiFocusTrap initialFocus={initialFocus}>
         {
           // Create a child div instead of applying these props directly to FocusTrap, or else
           // fallbackFocus won't work.
         }
-        <div
+        <motion.div
           ref={node => {
             this.modal = node;
           }}
@@ -55,6 +62,10 @@ export class EuiModal extends Component {
           onKeyDown={this.onKeyDown}
           tabIndex={0}
           style={newStyle || style}
+          variants={motionModal}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
           {...rest}>
           <EuiI18n
             token="euiModal.closeModal"
@@ -70,7 +81,7 @@ export class EuiModal extends Component {
             )}
           </EuiI18n>
           <div className="euiModal__flex">{children}</div>
-        </div>
+        </motion.div>
       </EuiFocusTrap>
     );
   }

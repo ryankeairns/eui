@@ -16,7 +16,7 @@
   border-radius: $euiBorderRadius;
   z-index: $euiZModal;
   min-width: $euiFormMaxWidth;
-  animation: euiModal $euiAnimSpeedSlow $euiAnimSlightBounce;
+  // animation: euiModal $euiAnimSpeedSlow $euiAnimSlightBounce;
 
   .euiModal__flex { /* 1 */
     flex: 1 1 auto;

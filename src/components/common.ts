@@ -13,6 +13,10 @@ export interface CommonProps {
   'data-test-subj'?: string;
 }
 
+export const assertNever = (x: never): never => {
+  throw new Error(`Unexpected value ${x}`);
+};
+
 export type NoArgCallback<T> = () => T;
 
 // utility types:
